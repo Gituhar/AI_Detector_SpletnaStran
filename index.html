@@ -9,8 +9,8 @@
         /* 1. OSNOVNO OBLIKOVANJE TELESA IN ELEKTRIČNI ŠUM */
         /* ---------------------------------------------------- */
         body {
-            background-color: #000000; /* Črno ozadje */
-            font-family: 'Courier New', Courier, monospace; /* High-tech pisava */
+            background-color: #000000;
+            font-family: 'Courier New', Courier, monospace;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -18,7 +18,7 @@
             height: 100vh;
             margin: 0;
             text-align: center;
-            overflow: hidden; /* Skrijemo morebitni šum izven zaslona */
+            overflow: hidden;
             position: relative;
         }
 
@@ -32,42 +32,48 @@
             height: 100%;
             /* Slika šuma v obliki majhnih belih pik, ki se ponavljajo */
             background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpiYGBgYWBgYGVlZQQABQAAH5gBPQAAAAxJREFUeNpiYGAEAAAgACgABAABAAAAAAAAAAAAPgAAAABJRU5ErkJggg==');
-            opacity: 0.05; /* Zelo transparentno, da je subtilno */
-            pointer-events: none; /* Da ne moti klikov */
+            opacity: 0.05;
+            pointer-events: none;
             z-index: 1;
         }
 
         /* ---------------------------------------------------- */
-        /* 2. GLAVNI NASLOV - ŽARENJE IN UTRIPANJE VELIKOSTI */
+        /* 2. GLAVNI NASLOV - ŽARENJE IN DRAMATIČNO UTRIPANJE */
         /* ---------------------------------------------------- */
         .glavni-napis {
-            font-size: 3em; 
+            font-size: 3.5em; /* Osnovna VELIKA velikost za PC */
             font-weight: bold;
-            color: #FFD700; /* Zlato rumena */
-            z-index: 2; /* Nad šumom */
+            color: #FFD700;
+            z-index: 2;
             
-            /* Animacija: 'utrip-velikost' traja 2s, ponavlja se, menjalna smer */
-            animation: utrip-velikost 2s infinite alternate ease-in-out;
+            /* Animacija ostane 2 sekundi */
+            animation: utrip-velikost 2s infinite alternate ease-in-out; 
+            
+            /* Psevdo-žarenje (Glow) */
+            text-shadow: 
+                0 0 10px #FFA500,
+                0 0 20px #FFD700,
+                0 0 30px #FF8C00;
         }
 
-        /* Psevdo-žarenje (Glow) */
-        .glavni-napis {
-            /* Več slojev žarenja: oranžna, rumena */
-            text-shadow: 
-                0 0 10px #FFA500,  /* Oranžno žarenje */
-                0 0 20px #FFD700,  /* Rumeno žarenje */
-                0 0 30px #FF8C00;  /* Temno oranžno žarenje */
+        /* Prilagoditev velikosti pisave za MOBILNE NAPRAVE (Responsive design) */
+        @media (max-width: 600px) {
+            .glavni-napis {
+                font-size: 1.8em; /* Precej zmanjšamo velikost pisave za mobilni zaslon */
+            }
         }
         
-        /* Ključni okvirji za animacijo - utripanje po velikosti (krčenje/raztezanje) */
+        /* Ključni okvirji za animacijo - dramatično krčenje/raztezanje */
         @keyframes utrip-velikost {
             0% {
-                opacity: 0.7; /* Temnejše in manjše */
-                transform: scale(0.98); 
+                opacity: 0.7; 
+                /* Dramatično ZMANJŠAMO tekst (na 85% normalne velikosti) */
+                transform: scale(0.85); 
                 text-shadow: 0 0 5px #FFA500, 0 0 10px #FFD700;
             }
             100% {
-                opacity: 1; /* Svetlejše in večje */
+                opacity: 1;
+                /* Max velikost ostaja skoraj ista kot originalna (102% normalne velikosti) */
                 transform: scale(1.02); 
                 text-shadow: 0 0 15px #FFA500, 0 0 30px #FFD700, 0 0 50px #FF8C00;
             }
@@ -78,7 +84,7 @@
         /* ---------------------------------------------------- */
         .kontakt {
             font-size: 0.8em; 
-            color: #444444; /* Temno siva, subtilno */
+            color: #444444;
             margin-top: 50px;
             z-index: 2;
         }
