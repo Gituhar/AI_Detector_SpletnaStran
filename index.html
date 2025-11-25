@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stran V Izdelavi</title>
+    <title>Stran V Izdelavi - High-Tech</title>
     <style>
-        /* Osnovno oblikovanje telesa - črno ozadje, centriranje */
+        /* ---------------------------------------------------- */
+        /* 1. OSNOVNO OBLIKOVANJE TELESA IN ELEKTRIČNI ŠUM */
+        /* ---------------------------------------------------- */
         body {
             background-color: #000000; /* Črno ozadje */
-            color: #ffffff; /* Privzeta barva teksta (če ne deluje animacija) */
-            font-family: Arial, sans-serif;
+            font-family: 'Courier New', Courier, monospace; /* High-tech pisava */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -17,39 +18,74 @@
             height: 100vh;
             margin: 0;
             text-align: center;
+            overflow: hidden; /* Skrijemo morebitni šum izven zaslona */
+            position: relative;
         }
 
-        /* Glavni naslov - Utripanje in žarenje */
+        /* Psevdo-element za simulacijo električnega šuma (Noise/Static) */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Slika šuma v obliki majhnih belih pik, ki se ponavljajo */
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpiYGBgYWBgYGVlZQQABQAAH5gBPQAAAAxJREFUeNpiYGAEAAAgACgABAABAAAAAAAAAAAAPgAAAABJRU5ErkJggg==');
+            opacity: 0.05; /* Zelo transparentno, da je subtilno */
+            pointer-events: none; /* Da ne moti klikov */
+            z-index: 1;
+        }
+
+        /* ---------------------------------------------------- */
+        /* 2. GLAVNI NASLOV - ŽARENJE IN UTRIPANJE VELIKOSTI */
+        /* ---------------------------------------------------- */
         .glavni-napis {
-            font-size: 3em; /* Velika pisava */
+            font-size: 3em; 
             font-weight: bold;
-            text-shadow: 0 0 10px #FFA500, 0 0 20px #FFD700; /* Oranžno/rumeno žarenje */
-            color: #FFD700; /* Osnovna barva teksta - zlato rumena */
-            animation: utripanje 2.5s infinite alternate; /* Animacija: traja 2.5s, ponavlja se, menjajoča smer */
-            padding-bottom: 50px; /* Razmik do kontakta */
+            color: #FFD700; /* Zlato rumena */
+            z-index: 2; /* Nad šumom */
+            
+            /* Animacija: 'utrip-velikost' traja 2s, ponavlja se, menjalna smer */
+            animation: utrip-velikost 2s infinite alternate ease-in-out;
         }
 
-        /* Ključni okvirji za animacijo - utripanje */
-        @keyframes utripanje {
+        /* Psevdo-žarenje (Glow) */
+        .glavni-napis {
+            /* Več slojev žarenja: oranžna, rumena */
+            text-shadow: 
+                0 0 10px #FFA500,  /* Oranžno žarenje */
+                0 0 20px #FFD700,  /* Rumeno žarenje */
+                0 0 30px #FF8C00;  /* Temno oranžno žarenje */
+        }
+        
+        /* Ključni okvirji za animacijo - utripanje po velikosti (krčenje/raztezanje) */
+        @keyframes utrip-velikost {
             0% {
-                opacity: 0.2; /* Začetek utripanja (temno) */
-                text-shadow: 0 0 5px #FFA500;
+                opacity: 0.7; /* Temnejše in manjše */
+                transform: scale(0.98); 
+                text-shadow: 0 0 5px #FFA500, 0 0 10px #FFD700;
             }
             100% {
-                opacity: 1; /* Konec utripanja (svetlo) */
-                text-shadow: 0 0 10px #FFA500, 0 0 40px #FFD700, 0 0 80px #FF8C00; /* Močnejše žarenje */
+                opacity: 1; /* Svetlejše in večje */
+                transform: scale(1.02); 
+                text-shadow: 0 0 15px #FFA500, 0 0 30px #FFD700, 0 0 50px #FF8C00;
             }
         }
 
-        /* Kontaktni tekst - majhen in kopirljiv */
+        /* ---------------------------------------------------- */
+        /* 3. KONTAKTNI TEKST */
+        /* ---------------------------------------------------- */
         .kontakt {
-            font-size: 0.8em; /* Majhna pisava */
-            color: #aaaaaa; /* Svetlo siva, da se loči */
+            font-size: 0.8em; 
+            color: #444444; /* Temno siva, subtilno */
+            margin-top: 50px;
+            z-index: 2;
         }
 
         .kontakt-email {
-            color: #eeeeee;
-            text-decoration: none; /* Odstrani podčrtaj linka */
+            color: #888888;
+            text-decoration: none; 
             font-weight: bold;
         }
     </style>
@@ -57,7 +93,7 @@
 <body>
 
     <h1 class="glavni-napis">
-        AI DETEKTOR V IZDELAVI. NA VOLJO KMALU!!! (verjetno)
+        AI DETEKTOR V IZDELAVI! NA VOLJU KMALU! (verjetno...)
     </h1>
 
     <p class="kontakt">
