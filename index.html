@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stran V Izdelavi</title>
+    <style>
+        /* Osnovno oblikovanje telesa - črno ozadje, centriranje */
+        body {
+            background-color: #000000; /* Črno ozadje */
+            color: #ffffff; /* Privzeta barva teksta (če ne deluje animacija) */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Glavni naslov - Utripanje in žarenje */
+        .glavni-napis {
+            font-size: 3em; /* Velika pisava */
+            font-weight: bold;
+            text-shadow: 0 0 10px #FFA500, 0 0 20px #FFD700; /* Oranžno/rumeno žarenje */
+            color: #FFD700; /* Osnovna barva teksta - zlato rumena */
+            animation: utripanje 2.5s infinite alternate; /* Animacija: traja 2.5s, ponavlja se, menjajoča smer */
+            padding-bottom: 50px; /* Razmik do kontakta */
+        }
+
+        /* Ključni okvirji za animacijo - utripanje */
+        @keyframes utripanje {
+            0% {
+                opacity: 0.2; /* Začetek utripanja (temno) */
+                text-shadow: 0 0 5px #FFA500;
+            }
+            100% {
+                opacity: 1; /* Konec utripanja (svetlo) */
+                text-shadow: 0 0 10px #FFA500, 0 0 40px #FFD700, 0 0 80px #FF8C00; /* Močnejše žarenje */
+            }
+        }
+
+        /* Kontaktni tekst - majhen in kopirljiv */
+        .kontakt {
+            font-size: 0.8em; /* Majhna pisava */
+            color: #aaaaaa; /* Svetlo siva, da se loči */
+        }
+
+        .kontakt-email {
+            color: #eeeeee;
+            text-decoration: none; /* Odstrani podčrtaj linka */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="glavni-napis">
+        STRAN V IZDELAVI. KMALU NA VOLJO!
+    </h1>
+
+    <p class="kontakt">
+        kontakt: <span class="kontakt-email">gams.matej@gmail.com</span>
+    </p>
+
+</body>
+</html>
